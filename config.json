@@ -1,0 +1,8 @@
+{
+    "DBType": "MockDB",
+    "DBFile": "/db/data.db",
+    
+    "listen": "0.0.0.0:10000",
+    "APIBase": "api",
+    "APIVersion": "v1"
+}
