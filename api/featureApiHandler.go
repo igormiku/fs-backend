@@ -9,6 +9,8 @@ import (
 )
 
 func (api API) featuresApiHandler(w http.ResponseWriter, r *http.Request) {
+	api.setupHeader(&w, r)
+
 	switch r.Method {
 	//return all list
 	case http.MethodGet:
@@ -58,10 +60,7 @@ func (api API) featuresApiHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (api API) featuresOptionsApiHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-	w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+	api.setupHeader(&w, r)
 
 	switch r.Method {
 	case http.MethodOptions:
@@ -75,6 +74,8 @@ func (api API) featuresOptionsApiHandler(w http.ResponseWriter, r *http.Request)
 }
 
 func (api API) featuresAddApiHandler(w http.ResponseWriter, r *http.Request) {
+	api.setupHeader(&w, r)
+
 	switch r.Method {
 	case http.MethodPost:
 		feature, err := api.unmarshalToFeature(w, r)

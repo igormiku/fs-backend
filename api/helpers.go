@@ -8,12 +8,14 @@ import (
 	"toggle_backend/storage"
 )
 
-func (api API) writeErrorJSON(w http.ResponseWriter, err error) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-	w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+func (api API) setupHeader(w *http.ResponseWriter, req *http.Request) {
+	(*w).Header().Set("Content-Type", "application/json")
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+}
 
+func (api API) writeErrorJSON(w http.ResponseWriter, err error) {
 	log.Printf("Failed with: %+v", err)
 	errorJSON, err := json.Marshal(err)
 	if err != nil {
@@ -23,11 +25,10 @@ func (api API) writeErrorJSON(w http.ResponseWriter, err error) {
 }
 
 func (api API) handleResult(i interface{}, err error, w http.ResponseWriter) {
-
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 
 	if err != nil {
 

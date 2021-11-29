@@ -25,13 +25,12 @@ func (api API) SetupAPI(apiBasePath string) {
 
 	api.newAPI(apiBasePath, "v1", "features", "GET", api.featuresApiHandler)
 	api.newAPI(apiBasePath, "v1", "features/{id}", "GET", api.featuresApiHandler)
-	//CHROME CORS compliance
 	api.newAPI(apiBasePath, "v1", "features/{id}", "OPTIONS", api.featuresOptionsApiHandler)
 	api.newAPI(apiBasePath, "v1", "features", "POST", api.featuresApiHandler)
-	//CHROME CORS compliance
 	api.newAPI(apiBasePath, "v1", "features", "OPTIONS", api.featuresOptionsApiHandler)
 	api.newAPI(apiBasePath, "v1", "features/add", "POST", api.featuresAddApiHandler)
 	api.newAPI(apiBasePath, "v1", "features", "PUT", api.featuresApiHandler)
+
 	api.newAPI(apiBasePath, "v1", "features", "DELETE", api.featuresApiHandler)
 
 }
