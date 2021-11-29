@@ -57,7 +57,7 @@ func (b *MockDBImpl) Delete(ctx context.Context, ft FeatureToggle) error {
 
 func (b *MockDBImpl) Add(ctx context.Context, ft FeatureToggle) (FeatureToggle, error) {
 
-	//take care of ID (unique etc...)
+	//TODO: take care of ID (unique etc...)
 	ft.Id = rand.Intn(1000)
 	b.FeatureToggles = append(b.FeatureToggles, ft)
 

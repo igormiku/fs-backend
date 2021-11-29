@@ -61,7 +61,7 @@ curl -X POST -H 'content-type: application/json' --data '{"customerId": "1", "fe
 3. Inverted default is false, which means feature is available for a customers, if true it is not.
 4. FeatureToggle entity has an id, which is supposed to be unique key, but unique checks are not implemented. For new entries random id is provided. 
 5. Archiving means deletion
-6. Mind Chrome CORS rules, don't allowing cross origin if not SSL, bypassed for this project. Made OPTIONS method to reply HTTP 204 to compile with Chrome rules
+6. Mind Chrome CORS rules, don't allowing cross origin, bypassed for this project. Made OPTIONS method to reply HTTP 204 to compile with Chrome rules
 7. API example in requirement document is implemented, and available only in backend call.(refer to above in this readme for curl to check it)
 8. Datetime for FeatureToggle is stored as string in unix datetime format (shell sample commands: date +%s, date -r 1638043542)
 
